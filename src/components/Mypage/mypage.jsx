@@ -1,10 +1,10 @@
 import React from 'react'
-import gen_dic from './content.module.css'
+import gen_dic from './mypage.module.css'
 import Profile from './Profile/profile'
 import Myposts from './Myposts/myposts'
 
 
-const Content = () => {
+const Mypage = () => {
     return (
         <div>
             <Profile />
@@ -13,4 +13,4 @@ const Content = () => {
     )
 }
 
-export default Content
+export default Mypage
