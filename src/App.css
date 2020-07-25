@@ -6,3 +6,9 @@
   'header header'
   'nav mcontent';
 }
+
+.mcontent {
+  grid-area: mcontent;
+  margin-top: 25px;
+  margin-left: 70px;
+}

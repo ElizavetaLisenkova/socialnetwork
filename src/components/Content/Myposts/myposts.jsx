@@ -10,8 +10,8 @@ const Myposts = () => {
           <input type="text"/>
           <button>Опубликовать</button>
         </form>
-        <Post />
-        <Post />
+        <Post text="Приветики, я зарегалась ура"/>
+        <Post text="Публикую второй пост, все заебись"/>
       </div>
     )
 };

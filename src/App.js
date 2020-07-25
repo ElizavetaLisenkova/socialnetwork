@@ -14,7 +14,9 @@ class App extends React.Component {
       <div className='wrapper'>
         <Header />
         <Nav />
+        <div className="mcontent">
         <Content />
+        </div>
       </div>
     );
   };

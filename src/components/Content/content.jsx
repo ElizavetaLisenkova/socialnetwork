@@ -6,7 +6,7 @@ import Myposts from './Myposts/myposts'
 
 const Content = () => {
     return (
-        <div className={gen_dic.mcontent}>
+        <div>
             <Profile />
             <Myposts />
         </div>
