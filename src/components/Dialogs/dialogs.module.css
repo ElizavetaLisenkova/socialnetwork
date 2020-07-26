@@ -1,0 +1,14 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    background-color: darkgray;
+}
+
+.users a {
+    text-decoration: none;
+    color: black;
+}
+
+.users a.active {
+    color: thistle;
+}

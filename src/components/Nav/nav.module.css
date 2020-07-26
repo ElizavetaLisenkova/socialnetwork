@@ -6,6 +6,29 @@
     
   }
   nav a {
+    font-family: Century Gothic;
+    font-size: large;
     text-decoration: none;
     color: rgb(245, 234, 220);
   }
+
+.item a.active {
+  color: rgb(218, 186, 144);
+}
+
+.item {
+  padding-top: 15px;
+}
+
+.button {
+  display: inline-block; 
+  border-radius: 20px;
+  width: 100px;
+  height: 60px;
+  background-color: rgba(0, 165, 165, 0.555);
+  
+}
+
+.button:active {
+  background-color:  rgba(58, 197, 197, 0.596);
+}
