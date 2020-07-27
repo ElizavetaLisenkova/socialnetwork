@@ -1,0 +1,8 @@
+.users a {
+    text-decoration: none;
+    color: black;
+}
+
+.users a.active {
+    color: thistle;
+}
