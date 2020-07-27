@@ -3,16 +3,20 @@ import gen_dic from './myposts.module.css'
 import Post from './Post/post';
 
 
-const Myposts = () => {
+let newPostElement = React.createRef()
+let addPost = () => {
+  alert(newPostElement.current.value);
+}
+
+const Myposts = (props) => {
   return (
     <div>
       <form >
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea ref={newPostElement}></textarea>
         {/* <input type="text" /> */}
-        <button>Опубликовать</button>
+        <button onClick={addPost}>Опубликовать</button>
       </form>
-      <Post text="Приветики, я зарегалась ура" />
-      <Post text="Публикую второй пост, все заебись" />
+      {props.componentPosts}
     </div>
   )
 };

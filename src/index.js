@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Users from './components/Dialogs/Users/users';
 import Messages from './components/Dialogs/Messages/messages';
+import Post from './components/Mypage/Myposts/Post/post';
 
 
 const dialogUsers = [
@@ -17,12 +18,19 @@ const dialogMessages = [
   {userMessage: "you disappointed me, Evgeniy"}
 ]
 
+const postText = [
+  {mes: "Приветики, я зарегалась ура"},
+  {mes: "Публикую второй пост, все заебись"}
+]
+
+const componentPosts = postText.map( (el) => <Post text={el.mes}/>);
+
 const componentUsers = dialogUsers.map( (el) => <Users id={el.id} userName={el.userName}/>);
 const componentMessage = dialogMessages.map( (el) => <Messages message={el.userMessage}/>)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App componentUsers={componentUsers} componentMessage={componentMessage}/>
+    <App componentUsers={componentUsers} componentMessage={componentMessage} componentPosts={componentPosts}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

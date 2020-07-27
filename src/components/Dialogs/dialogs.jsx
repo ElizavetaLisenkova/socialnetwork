@@ -6,12 +6,13 @@ import Messages from './Messages/messages'
 
 
 
-
 const Dialogs = (props) => {
     return (
         <div className={gen_dic.dialogs}>
             <div className={gen_dic.users}>
                 {props.componentUsers}
+                <textarea></textarea>
+                <button>Отправить</button>
             </div>
             <div className={gen_dic.messages}>
                 {props.componentMessage}
