@@ -1,8 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import gen_dic from './users.module.css'
-import Dialogs from '../dialogs'
-
 
 
 const Users = (props) => {

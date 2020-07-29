@@ -1,10 +1,6 @@
 import React from 'react'
 import gen_dic from './dialogs.module.css'
 
-import Users from './Users/users'
-import Messages from './Messages/messages'
-
-
 
 const Dialogs = (props) => {
     return (
