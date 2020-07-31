@@ -1,10 +1,6 @@
 import ProfileReducer from "./ProfileReducer";
 import DialogsReducer from "./DialogsReducer";
 
-const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-
-
 
 let store = {
     state: {

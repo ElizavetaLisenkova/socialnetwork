@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from './Redux/state'
+import store from './Redux/redux-store'
 import * as serviceWorker from './serviceWorker';
 
 
@@ -20,7 +20,10 @@ let rerenderTree = (state) => {
 
 
 
-rerenderTree(store.state);
-store.subscribe(rerenderTree);
+rerenderTree(store.getState());
+store.subscribe(() => {
+    let state = store.getState();
+    rerenderTree(state);
+});
 
 serviceWorker.unregister();

@@ -4,7 +4,6 @@ import Users from './Users/users'
 import Messages from './Messages/messages'
 import { addMesActionCreator, updateNewMesTextActionCreator } from '../../Redux/DialogsReducer'
 
-
 const Dialogs = (props) => {
 
     let newTextElement = React.createRef()

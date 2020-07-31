@@ -6,7 +6,22 @@ export let addMesActionCreator = () => ({type: ADD_MES})
 export let updateNewMesTextActionCreator = (text) => ({type: UPDATE_NEW_MES_TEXT, newMesText: text})
 
 
-let DialogsReducer = (state, action) => {
+let InitialState ={
+    
+    dialogUsers: [
+        { id: 1, userName: 'Liza' },
+        { id: 2, userName: 'Sveta' },
+    ],
+
+    dialogMessages: [
+        { userMessage: "hello" },
+        { userMessage: "you disappointed me, Evgeniy" },
+
+    ],
+    newTextMes: ""
+};
+
+let DialogsReducer = (state=InitialState, action) => {
     switch(action.type) {
         case ADD_MES:
             let newMes = {userMessage: state.newTextMes};
