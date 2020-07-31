@@ -1,3 +1,11 @@
+import ProfileReducer from "./ProfileReducer";
+import DialogsReducer from "./DialogsReducer";
+
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+
+
+
 let store = {
     state: {
         profilePage: {
@@ -19,24 +27,25 @@ let store = {
             dialogMessages: [
                 { userMessage: "hello" },
                 { userMessage: "you disappointed me, Evgeniy" },
-            ]
+
+            ],
+            newTextMes: ""
         },
     },
-    rerenderTree(){
+    rerenderTree() {
         console.log('')
-    },
-    addPost() {
-        let newPost = { id: 3, mes: this.state.profilePage.newTextPost };
-        this.state.profilePage.posts.push(newPost);
-        this.rerenderTree(this.state);
-    },
-    updateNewPostText(newPostText) {
-        this.state.profilePage.newTextPost = newPostText;
-        this.rerenderTree(this.state);
     },
     subscribe(renderFunc) {
         this.rerenderTree = renderFunc;
-    }
+    },
+    dispatch(action) {
+        this.state.profilePage = ProfileReducer(this.state.profilePage, action);
+        this.state.dialogsPage = DialogsReducer(this.state.dialogsPage, action);
+
+        this.rerenderTree(this.state);
+
+    },
 }
+
 
 export default store;
