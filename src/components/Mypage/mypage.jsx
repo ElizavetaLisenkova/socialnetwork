@@ -1,16 +1,17 @@
 import React from 'react'
 import gen_dic from './mypage.module.css'
 import Profile from './Profile/profile'
-import Myposts from './Myposts/myposts'
+
+import MypostsContainer from './Myposts/mypostsContainer'
 
 
 const Mypage = (props) => {
     return (
         <div>
             <Profile />
-            <Myposts state={props.state} dispatch={props.dispatch}/>
+            <MypostsContainer state={props.state} dispatch={props.dispatch}/>
         </div>
     )
 }
 
-export default Mypage
+export default Mypage;
