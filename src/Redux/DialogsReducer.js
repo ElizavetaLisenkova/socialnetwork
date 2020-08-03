@@ -25,7 +25,7 @@ let DialogsReducer = (state=InitialState, action) => {
     switch(action.type) {
         case ADD_MES: {
             let stateCopy = {...state}
-            stateCopy.newMesText = {...state.newMesText}
+            stateCopy.dialogMessages = [...state.dialogMessages]
             let newMes = {userMessage: stateCopy.newTextMes};
             stateCopy.dialogMessages.push(newMes);
             return stateCopy;
