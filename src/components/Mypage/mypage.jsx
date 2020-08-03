@@ -9,7 +9,7 @@ const Mypage = (props) => {
     return (
         <div>
             <Profile />
-            <MypostsContainer state={props.state} dispatch={props.dispatch}/>
+            <MypostsContainer />
         </div>
     )
 }

@@ -4,26 +4,21 @@ import './index.css';
 import App from './App';
 import store from './Redux/redux-store'
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
 
 
 
-let rerenderTree = (state) => {
+
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} dispatch={store.dispatch.bind(store)}/>
+            <Provider store={store}>
+                 <App />
+            </Provider>
         </React.StrictMode>,
         document.getElementById("root")
     );
-}
 
 
 
-
-
-rerenderTree(store.getState());
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderTree(state);
-});
 
 serviceWorker.unregister();

@@ -23,13 +23,19 @@ let InitialState ={
 
 let DialogsReducer = (state=InitialState, action) => {
     switch(action.type) {
-        case ADD_MES:
-            let newMes = {userMessage: state.newTextMes};
-            state.dialogMessages.push(newMes);
-            return state;
-        case UPDATE_NEW_MES_TEXT:
-            state.newTextMes = action.newMesText;
-            return state;
+        case ADD_MES: {
+            let stateCopy = {...state}
+            stateCopy.newMesText = {...state.newMesText}
+            let newMes = {userMessage: stateCopy.newTextMes};
+            stateCopy.dialogMessages.push(newMes);
+            return stateCopy;
+        }
+        case UPDATE_NEW_MES_TEXT:{
+            let stateCopy = {...state}
+            stateCopy.posts = {...state.posts}
+            stateCopy.newTextMes = action.newMesText;
+            return stateCopy;
+        }
         default:
             return state;
     }
