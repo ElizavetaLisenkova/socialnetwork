@@ -48,6 +48,14 @@ const Nav = () => {
                 </button>
             </div>
 
+            <div className={gen_dic.item}>
+                <button className={gen_dic.button}>
+                    <NavLink to="/users" activeClassName={gen_dic.active}>
+                       Users
+                    </NavLink>
+                </button>
+            </div>
+
 
         </nav>
     )

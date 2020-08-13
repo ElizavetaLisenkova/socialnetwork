@@ -7,6 +7,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import News from './components/News/news'
 import Settings from './components/Settings/settings'
 import DialogsContainer from './components/Dialogs/dialogsContainer';
+import UsersContainer from './components/Users/usersContainer';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class App extends React.Component {
             <Route path='/dialogs' render={() => <DialogsContainer />} />
             <Route path='/settings' component={Settings} />
             <Route path='/news' component={News} />
+            <Route path='/users' render = {() => <UsersContainer />} />
           </div>
         </div>
       </BrowserRouter>

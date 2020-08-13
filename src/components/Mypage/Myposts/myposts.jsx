@@ -13,7 +13,7 @@ const Myposts = (props) => {
     props.addPost();
   };
 
-  let componentPosts = props.posts.map( (el) => <Post text={el.mes}/>);
+  let componentPosts = props.posts.map( (el) => <Post id={el.id} key={el.id} text={el.mes}/>);
 
   let updateNewTextPost = () => {
     props.updateNewTextPost(newPostElement.current.value);

@@ -9,6 +9,7 @@ let InitialState = {
     posts: [
         { id: 1, mes: "Приветики, я зарегалась ура" },
         { id: 2, mes: "Публикую второй пост, все заебись" },
+        {id: 3, mes: "Данилочка самый лучший"}
     ],
     newTextPost: ""
 
@@ -16,17 +17,17 @@ let InitialState = {
 let ProfileReducer = (state=InitialState, action) => {
     switch(action.type) {
         case ADD_POST: {
-            let stateCopy = {...state}
-            let newPost = { id: 3, mes: state.newTextPost };
-            stateCopy.posts = [...state.posts]
-            stateCopy.posts.push(newPost);
-            return stateCopy;
-        }
+            return {
+                ...state,
+                posts: [...state.posts, { id: 3, mes: state.newTextPost }], 
+            } 
+        };
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.newTextPost = {...state.newTextPost}
-            stateCopy.newTextPost = action.newPostText;
-            return stateCopy;
+            return {
+                ...state, 
+                newTextPost: action.newPostText
+            }
+            
         }
         default:
             return state;

@@ -1,6 +1,6 @@
 import React from 'react'
 import gen_dic from './dialogs.module.css'
-import Users from './Users/users'
+import User from './Users/user'
 import Messages from './Messages/messages'
 
 const Dialogs = (props) => {
@@ -13,8 +13,8 @@ const Dialogs = (props) => {
         props.updateNewMesText(newTextElement.current.value);
     }
     
-    const componentUsers = props.users.map((el) => <Users id={el.id} userName={el.userName} />);
-    const componentMessage = props.messages.map((el) => <Messages message={el.userMessage} />)
+    const componentUsers = props.users.map((el) => <User id={el.id} key={el.id} userName={el.userName} />);
+    const componentMessage = props.messages.map((el) => <Messages id={el.id} message={el.userMessage} key={el.id} />)
     return (
         <div className={gen_dic.dialogs}>
             <div className={gen_dic.users}>
