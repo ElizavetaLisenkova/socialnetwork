@@ -1,41 +1,38 @@
 import React from 'react'
-import * as axios from 'axios';
+
+import gen_dic from './users.module.css'
 import profilePhoto from '../../assets/Images/photo.jpg'
 
-class Users extends React.Component {
-    constructor(props) {
-        super(props)
-        axios
-            .get("https://social-network.samuraijs.com/api/1.0/users", { headers: { 'API-KEY': 'f82df6c3-33b7-4f9c-aecf-8cc3197eb73e' } })
-            .then((response) => {
-                this.props.set_users(response.data.items);
-            });
+
+
+const Users = (props) => {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let btnPages = []
+    for (let i = 1; i <= pagesCount; i++) {
+        btnPages.push(i)
     }
-    render() {
-        return (
-            <div>
-                {this.props.users.map(u =>
-                    <div key={u.id}>
-                        <div><img src={u.photos.small != null ? u.photos.small : profilePhoto} alt="" /></div>
-                        <div>{u.name}</div>
-                        <div>status: {u.status}</div>
-                        <div>
-                            {'u.location.city'}
-                            {'u.location.country'}
-                        </div>
-                        <div>
-                            {u.followed ? <button onClick={() => this.props.unfollow(u.id)} >Unfollowed</button> : <button onClick={() => this.props.follow(u.id)}>Followed</button>}
-                        </div>
+    return (
+        <div>
+            {props.isLoading && <div>Loading IMG will be here</div>}
+            {btnPages.map(p => {
+                return (<button className={props.currentPage === p && gen_dic.currentPage} onClick={() => props.changePage(p)}>{p}</button>)
+            })}
+
+            {props.users.map(u =>
+                <div key={u.id}>
+                    <div><img src={u.photos.small != null ? u.photos.small : profilePhoto} alt="" /></div>
+                    <div>{u.name}</div>
+                    <div>status: {u.status}</div>
+                    <div>
+                        {'u.location.city'}
+                        {'u.location.country'}
                     </div>
-                )}
-            </div>
-
-
-
-        )
-    }
+                    <div>
+                        {u.followed ? <button onClick={() => props.unfollow(u.id)} >Unfollowed</button> : <button onClick={() => props.follow(u.id)}>Followed</button>}
+                    </div>
+                </div>
+            )}
+        </div>
+    )
 }
-
-
-
 export default Users;
