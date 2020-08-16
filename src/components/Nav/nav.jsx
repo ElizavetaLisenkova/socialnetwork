@@ -10,7 +10,7 @@ const Nav = () => {
 
             <div className={gen_dic.item}>
                 <button className={gen_dic.button}>
-                    <NavLink to="/mypage" activeClassName={gen_dic.active}>
+                    <NavLink to="/profile" activeClassName={gen_dic.active}>
                         Profile
                     </NavLink>
                 </button>

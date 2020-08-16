@@ -2,6 +2,7 @@ import React from 'react'
 
 import gen_dic from './users.module.css'
 import profilePhoto from '../../assets/Images/photo.jpg'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -20,7 +21,9 @@ const Users = (props) => {
 
             {props.users.map(u =>
                 <div key={u.id}>
-                    <div><img src={u.photos.small != null ? u.photos.small : profilePhoto} alt="" /></div>
+                    <div>
+                        <NavLink to={`profile/${u.id}`}><img src={u.photos.small != null ? u.photos.small : profilePhoto} alt="" /></NavLink>
+                    </div>
                     <div>{u.name}</div>
                     <div>status: {u.status}</div>
                     <div>
