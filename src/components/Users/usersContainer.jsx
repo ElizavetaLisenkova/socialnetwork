@@ -9,7 +9,9 @@ class UsersAPIComponent extends React.Component {
     componentDidMount() {
         this.props.set_loading(true)
         axios
-            .get('https://social-network.samuraijs.com/api/1.0/users', { headers: { 'API-KEY': 'f82df6c3-33b7-4f9c-aecf-8cc3197eb73e' } })
+            .get('https://social-network.samuraijs.com/api/1.0/users', 
+            { withCredentials: true} ,
+            { headers: { 'API-KEY': 'f82df6c3-33b7-4f9c-aecf-8cc3197eb73e' } })
             .then((response) => {
                 this.props.set_loading(false)
                 this.props.set_users(response.data.items);
