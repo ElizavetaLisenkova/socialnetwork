@@ -1,32 +1,29 @@
 import React from 'react'
 import Users from './users'
-import * as axios from 'axios';
 import { connect } from 'react-redux'
 import { setUsersAC, unfollowAC, followAC, setCurrentPageAC, setUsersCountAC, setLoadingAC } from '../../Redux/UsersReducer'
+import { userAPI } from '../../API/api';
 
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
         this.props.set_loading(true)
-        axios
-            .get('https://social-network.samuraijs.com/api/1.0/users', 
-            { withCredentials: true} ,
-            { headers: { 'API-KEY': 'f82df6c3-33b7-4f9c-aecf-8cc3197eb73e' } })
-            .then((response) => {
+            userAPI.getUsers()
+            .then((data) => {
                 this.props.set_loading(false)
-                this.props.set_users(response.data.items);
-                this.props.set_users_count(response.data.totalCount);
+                this.props.set_users(data.items);
+                this.props.set_users_count(data.totalCount);
             });
     }
 
     changePage = (pageNumber) => {
+
         this.props.set_current_page(pageNumber)
         this.props.set_loading(true)
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, { headers: { 'API-KEY': 'f82df6c3-33b7-4f9c-aecf-8cc3197eb73e' } })
-            .then((response) => {
+        userAPI.getUsers2(this.props.pageNumber, this.props.pageSize)
+            .then((data) => {
                 this.props.set_loading(false)
-                this.props.set_users(response.data.items);
+                this.props.set_users(data.items);
             });
     }
 
