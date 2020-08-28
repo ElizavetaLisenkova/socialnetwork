@@ -10,7 +10,7 @@ export let setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile})
 let InitialState = {
     posts: [
         { id: 1, mes: "Приветики, я зарегалась ура" },
-        { id: 2, mes: "Публикую второй пост, все заебись" },
+        { id: 2, mes: "Публикую второй пост" },
     ],
     newTextPost: "",
     profile: null,

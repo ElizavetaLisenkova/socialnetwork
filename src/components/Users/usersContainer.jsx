@@ -1,30 +1,18 @@
 import React from 'react'
 import Users from './users'
 import { connect } from 'react-redux'
-import { setUsersAC, unfollowAC, followAC, setCurrentPageAC, setUsersCountAC, setLoadingAC } from '../../Redux/UsersReducer'
-import { userAPI } from '../../API/api';
+import {  getUsersThunkCreator1, getUsersThunkCreator2, followThunkCreator, unfollowThunkCreator } from '../../Redux/UsersReducer'
 
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
-        this.props.set_loading(true)
-            userAPI.getUsers()
-            .then((data) => {
-                this.props.set_loading(false)
-                this.props.set_users(data.items);
-                this.props.set_users_count(data.totalCount);
-            });
+        this.props.getUsers1()
     }
 
     changePage = (pageNumber) => {
 
-        this.props.set_current_page(pageNumber)
-        this.props.set_loading(true)
-        userAPI.getUsers2(this.props.pageNumber, this.props.pageSize)
-            .then((data) => {
-                this.props.set_loading(false)
-                this.props.set_users(data.items);
-            });
+        this.props.getUsers2(pageNumber, this.props.pageSize)
+        
     }
 
     render() {
@@ -36,7 +24,11 @@ class UsersAPIComponent extends React.Component {
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
                 users={this.props.users}
-                isLoading={this.props.isLoading}/>
+                isLoading={this.props.isLoading}
+                followingInProgressId={this.props.followingInProgressId}
+                
+               
+                />
         )
     }
 }
@@ -48,22 +40,21 @@ let mapStateToProps = (state) => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     isLoading: state.usersPage.isLoading,
+    followingInProgressId: state.usersPage.followingInProgressId
     };
 }
 
 
 const UsersContainer = connect(mapStateToProps, {
-    follow: followAC,
+    follow: followThunkCreator,
 
-    unfollow: unfollowAC,
+    unfollow: unfollowThunkCreator,
+
+    getUsers1: getUsersThunkCreator1,
+
+    getUsers2: getUsersThunkCreator2,
+
     
-    set_users: setUsersAC,
-
-    set_current_page: setCurrentPageAC,
- 
-    set_users_count: setUsersCountAC,
-  
-    set_loading: setLoadingAC,
     }) (UsersAPIComponent)
 
 

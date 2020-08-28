@@ -4,6 +4,7 @@ import gen_dic from './users.module.css'
 import profilePhoto from '../../assets/Images/photo.jpg'
 import { NavLink } from 'react-router-dom'
 import * as axios from 'axios';
+import { userAPI } from '../../API/api';
 
 
 
@@ -33,37 +34,20 @@ const Users = (props) => {
                     </div>
                     <div>
                         {u.followed ? 
-                        <button onClick={() => {
-                           axios
-                                .delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, 
-                               
-                                { withCredentials: true, headers: { 'API-KEY': 'f82df6c3-33b7-4f9c-aecf-8cc3197eb73e' } })
-                                .then((response) => {
-                                    if (response.data.resultCode === 0) {
-                                    props.unfollow(u.id)}
-                                });
-                            }
-                        }>
-                                 Unfollowed
+                        <button 
+                            disabled={props.followingInProgressId.some(id => id === u.id)} 
+                            onClick={() => {props.unfollow(u.id)}}>
+                            Unfollow
                         </button> : 
-                        <button onClick={() => {
-
-                            axios
-                                .post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, 
-                                {},
-                                {withCredentials: true, headers: { 'API-KEY': 'f82df6c3-33b7-4f9c-aecf-8cc3197eb73e' } })
-                                .then((response) => {
-                                    if (response.data.resultCode === 0) {
-                                    props.follow(u.id)}
-                                });
-                            }
-                        }>
-                                Followed
+                        <button 
+                            disabled={props.followingInProgressId.some(id => id === u.id)} 
+                            onClick={() => {props.follow(u.id)}}>
+                                Follow
                         </button>}
                     </div>
-                </div>
-            )}
-        </div>
-    )
-}
-export default Users;
+                    </div>
+                    )}
+                    </div>
+                    )
+                }
+                export default Users;
