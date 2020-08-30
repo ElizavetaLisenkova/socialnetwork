@@ -14,7 +14,7 @@ class UsersAPIComponent extends React.Component {
     changePage = (pageNumber) => {
 
         this.props.getUsers2(pageNumber, this.props.pageSize)
-        
+    
     }
 
     render() {
@@ -28,8 +28,6 @@ class UsersAPIComponent extends React.Component {
                 users={this.props.users}
                 isLoading={this.props.isLoading}
                 followingInProgressId={this.props.followingInProgressId}
-                
-               
                 />
         )
     }

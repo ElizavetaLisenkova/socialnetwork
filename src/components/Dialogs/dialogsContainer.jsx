@@ -1,4 +1,3 @@
-import React from 'react'
 import { addMesActionCreator, updateNewMesTextActionCreator } from '../../Redux/DialogsReducer'
 import Dialogs from './dialogs'
 import { connect } from 'react-redux'

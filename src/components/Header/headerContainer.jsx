@@ -1,6 +1,6 @@
 import Header from './header';
 import React from 'react';
-import {setAuthUserDataAC, authMe} from '../../Redux/AuthReducer';
+import { authMe} from '../../Redux/AuthReducer';
 import { connect } from 'react-redux';
 
 
