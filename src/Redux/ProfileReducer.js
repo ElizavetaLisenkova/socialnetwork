@@ -1,11 +1,18 @@
+import { userAPI } from "../API/api";
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 
+
 export let addPostActionCreator = () => ({type: ADD_POST})
 export let updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText: text})
-export let setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile})
+export let setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+
+export const getMyPage = (userId) => (dispatch) => {
+    return userAPI.getProfileInfo(userId).then((data) => {dispatch(setUserProfile(data))})  
+}
 
 let InitialState = {
     posts: [

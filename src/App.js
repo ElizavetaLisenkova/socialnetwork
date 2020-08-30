@@ -9,6 +9,7 @@ import DialogsContainer from './components/Dialogs/dialogsContainer';
 import UsersContainer from './components/Users/usersContainer';
 import ProfileContainer from './components/Profile/profileContainer';
 import HeaderContainer from './components/Header/headerContainer';
+import Login from './components/Login/login';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class App extends React.Component {
             <Route path='/settings' component={Settings} />
             <Route path='/news' component={News} />
             <Route path='/users' render = {() => <UsersContainer />} />
+            <Route path='/login' render = {() => <Login />} />
           </div>
         </div>
       </BrowserRouter>

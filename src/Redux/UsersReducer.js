@@ -100,7 +100,7 @@ export const getUsersThunkCreator1 = () => {
             dispatch(set_loading(false))
             dispatch(set_users(data.items));
             dispatch(set_users_count(data.totalCount));
-        });
+        }); 
     }
 }
 

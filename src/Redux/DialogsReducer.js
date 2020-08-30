@@ -10,7 +10,7 @@ let InitialState = {
 
     dialogUsers: [
         { id: 1, userName: 'Liza' },
-        { id: 2, userName: 'Sveta' },
+        { id: 2, userName: 'Vova' },
     ],
 
     dialogMessages: [

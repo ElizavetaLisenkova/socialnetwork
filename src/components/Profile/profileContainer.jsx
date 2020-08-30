@@ -1,11 +1,12 @@
 import React from 'react'
 import Profile from './ProfileInfo/profileInfo'
 import MypostsContainer from './Myposts/mypostsContainer'
-import * as axios from 'axios';
 import { connect } from 'react-redux';
-import {setUserProfileAC} from '../../Redux/ProfileReducer'
-import { withRouter } from 'react-router-dom';
-import { userAPI } from '../../API/api';
+import { getMyPage} from '../../Redux/ProfileReducer'
+import { withRouter} from 'react-router-dom';
+import { withAuthRedirect } from '../../hoc/AuthRedirect';
+import { compose } from 'redux';
+import ProfileStatus from './ProfileInfo/ProfileStatus';
 
 
 
@@ -15,15 +16,17 @@ class ProfileAPIComponent extends React.Component {
         if (!userId) {
             userId = 10865;
         }
-        userAPI.getProfileInfo(userId).then((data) => {this.props.setUserProfile(data)})           
+        this.props.getMyPage(userId);     
     };
       
 
 
     render () {
+
         return (
             <div>
                 <Profile {...this.props} />
+                <ProfileStatus />
                 <MypostsContainer />
             </div>
         )
@@ -32,15 +35,13 @@ class ProfileAPIComponent extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
     }
 }
 
-const ProfileContainer = connect(mapStateToProps, {
-    setUserProfile: setUserProfileAC
-    }) (withRouter(ProfileAPIComponent));
 
-
-
-
-export default ProfileContainer;
+export default compose(
+    connect(mapStateToProps, {getMyPage,}),
+    withAuthRedirect,
+    withRouter,
+)(ProfileAPIComponent);
